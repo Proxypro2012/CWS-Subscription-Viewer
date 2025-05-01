@@ -27,5 +27,5 @@ def get_subscription_status():
       print("User not found.")
 
 @app.route('/')
-def home()
+def home():
   return "Backend"
