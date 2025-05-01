@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import requests
 
 
@@ -28,4 +28,8 @@ def get_subscription_status():
 
 @app.route('/')
 def home():
-  return "Backend"
+  return "Backend for CWS"
+
+
+if __name__ == '__main__':
+    app.run()
