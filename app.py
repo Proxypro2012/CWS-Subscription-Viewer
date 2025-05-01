@@ -15,9 +15,9 @@ def get_subscription_status():
 
   for user in status:
       if user["name"].lower() == person.lower():  # case-insensitive match
-          print(f"Found: ID={user['user_id']}, Status={user['status']},")
+          print(f"Found: Name={user['name']}, Status={user['status']},")
           return jsonify({
-                "user_id": user["user_id"],
+                "name": user["name"],
                 "status": user["status"],
                 "expires": user["expires"]
             })
