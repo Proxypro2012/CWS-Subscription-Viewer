@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 
-app.route('/get-subscription-status', methods=['GET'])
+@app.route('/get-subscription-status', methods=['GET'])
 def get_subscription_status():
   data = request.get_json()
   person = data.get('person')
@@ -25,3 +25,7 @@ def get_subscription_status():
           break
   else:
       print("User not found.")
+
+@app.route('/')
+def home()
+  return "Backend"
