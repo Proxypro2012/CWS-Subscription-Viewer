@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     layout="wide",
     page_title="CWS Subscription Viewer",
-    page_icon="front-end/header-logo.png",  # Optionally, set a page icon
+    page_icon="front-end/header-logo.svg",  # Optionally, set a page icon
     initial_sidebar_state="expanded"
 )
 
@@ -20,7 +20,7 @@ menuOptions = []
 menuOptions.extend(["Subscription Status", "BlankSite"])
 st.sidebar.header("Navigation")
 selected_page = st.sidebar.radio("", options=menuOptions)
-st.sidebar.image("front-end/header-logo.png")
+st.sidebar.image("front-end/header-logo.svg")
 
 
 
