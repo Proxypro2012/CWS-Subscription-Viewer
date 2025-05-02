@@ -17,7 +17,7 @@ r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 
 # Sidebar 
 menuOptions = []
-st.sidebar.header("Navigation")
+st.sidebar.title("Navigation")
 st.sidebar.image("front-end/header-logo.svg")
 menuOptions.extend(["Subscription Status", "BlankSite"])
 selected_page = st.sidebar.radio("", options=menuOptions)
