@@ -31,8 +31,6 @@ def spawn_status_widgets():
 
         for i, user in enumerate(users):
             with st.status(f"{user['name']}'s Status", expanded=True):
-                st.write("🔍 Fetching status...")
-                time.sleep(0.5)
                 st.write(f"📄 Status: {user['status']}")
                 st.write(f"📅 Expires: {user['expires']}")
     else:
