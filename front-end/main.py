@@ -55,8 +55,8 @@ selected_page = st.sidebar.radio("", options=menuOptions)
 if selected_page == menuOptions[0]:
     with r1col1:
       st.title("Subscription Status")
-    for i in range(10)
-    st.write("")
+    for i in range(10):
+        st.write("")
     spawn_status_widgets()
 
 
