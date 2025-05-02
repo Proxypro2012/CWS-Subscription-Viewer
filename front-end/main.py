@@ -28,10 +28,10 @@ def spawn_status_widgets():
         count = data.get("subscriber_count", 0)
 
         for i in range(count):
-            st.status("Website Under Development", key=f"status_{i}")
+            with st.status("Website Under Development", expanded=False):
+                st.write(f"Slot {i + 1} reserved")
     else:
         st.error("Failed to load subscriber count.")
-        
 
 
 
