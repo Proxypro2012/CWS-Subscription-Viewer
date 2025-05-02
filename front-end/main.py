@@ -38,10 +38,17 @@ if selected_page == menuOptions[0]:
 
 
 def spawn_status_widgets():
-    url = str(f"{BASE_URL}get-subscriber-count")
-    response = requests.get(BASE_URL)
-    for i in int(response):
-        st.status("Website Under Development", key=i-1)
+    url = f"{BASE_URL}/get-subscriber-count"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        count = data.get("subscriber_count", 0)
+
+        for i in range(count):
+            st.status("Website Under Development", key=f"status_{i}")
+    else:
+        st.error("Failed to load subscriber count.")
         
 
 
