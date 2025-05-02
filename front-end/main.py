@@ -25,11 +25,10 @@ r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 def spawn_status_widgets():
     url = f"{BASE_URL}/get-subscriber-list"
     response = requests.get(url)
-    st.write(response.text)  # Add this after the request to inspect the data
 
 
     if response.status_code == 200:
-        users = response.json()  # list of subscriber objects
+        users = response.json()
 
         for i, user in enumerate(users):
             with st.status(f"{user['name']}'s Status", expanded=True):
@@ -56,6 +55,8 @@ selected_page = st.sidebar.radio("", options=menuOptions)
 if selected_page == menuOptions[0]:
     with r1col1:
       st.title("Subscription Status")
+    for i in range(10)
+    st.write("")
     spawn_status_widgets()
 
 
