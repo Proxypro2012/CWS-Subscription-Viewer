@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     layout="wide",
     page_title="CWS Subscription Viewer",
-    page_icon="front-end/logo.png",  # Optionally, set a page icon
+    page_icon="front-end/header-logo.png",  # Optionally, set a page icon
     initial_sidebar_state="expanded"
 )
 
