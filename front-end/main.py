@@ -25,6 +25,8 @@ r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 def spawn_status_widgets():
     url = f"{BASE_URL}/get-subscriber-list"
     response = requests.get(url)
+    st.write(response.text)  # Add this after the request to inspect the data
+
 
     if response.status_code == 200:
         users = response.json()  # list of subscriber objects
