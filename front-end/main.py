@@ -42,7 +42,7 @@ def spawn_status_widgets():
 
 # Sidebar 
 menuOptions = []
-st.sidebar.title("Navigation")
+#st.sidebar.title("Navigation")
 st.sidebar.image("front-end/header-logo.svg")
 menuOptions.extend(["Subscription Status", "BlankSite"])
 selected_page = st.sidebar.radio("", options=menuOptions)
