@@ -27,6 +27,23 @@ def get_subscription_status():
         print("Server error:", e)
         return jsonify({"error": "Internal server error"}), 500
 
+
+
 @app.route('/')
 def home():
     return "Backend for CWS"
+
+
+
+@app.route('/get-subscriber-count', methods=['GET'])
+def get_subscriber_count():
+    try:
+        with open("subscription-status.json", 'r') as file:
+            data = json.load(file)
+        
+        count = len(data)
+        return jsonify({"subscriber_count": count})
+    
+    except Exception as e:
+        print("Error:", e)
+        return jsonify({"error": "Failed to count subscribers"}), 500
