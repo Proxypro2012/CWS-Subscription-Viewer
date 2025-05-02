@@ -1,7 +1,8 @@
+import time
 import streamlit as st
 import streamlit.components.v1 as components
 import requests
-import time
+
 
 
 st.set_page_config(
