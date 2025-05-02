@@ -23,6 +23,15 @@ r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 
 
 def spawn_status_widgets():
+    st.write("Starting test...")
+    import time  # force local scope import just in case
+    for i in range(3):
+        with st.status(f"Test {i+1}", expanded=True):
+            st.write("Sleeping...")
+            time.sleep(0.5)
+            st.write("Done!")
+
+    '''
     url = f"{BASE_URL}/get-subscriber-list"
     response = requests.get(url)
 
@@ -36,7 +45,7 @@ def spawn_status_widgets():
                 st.write(f"📄 Status: {user['status']}")
                 st.write(f"📅 Expires: {user['expires']}")
     else:
-        st.error("Failed to load subscriber list.")
+        st.error("Failed to load subscriber list.")'''
 
 
 
