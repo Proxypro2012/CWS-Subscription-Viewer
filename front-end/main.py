@@ -20,18 +20,18 @@ r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 
 
 def spawn_status_widgets():
-    url = f"{BASE_URL}/get-subscriber-count"
+    url = f"{BASE_URL}/get-subscriber-list"
     response = requests.get(url)
 
     if response.status_code == 200:
-        data = response.json()
-        count = data.get("subscriber_count", 0)
+        users = response.json()
 
-        for i in range(count):
-            with st.status("Website Under Development", expanded=False):
-                st.write(f"Slot {i + 1} reserved")
+        for i, user in enumerate(users):
+            with st.status(f"{user['name']}'s Subscription", expanded=False):
+                st.write(f"**Status:** {user['status'].capitalize()}")
+                st.write(f"**Expires:** {user['expires']}")
     else:
-        st.error("Failed to load subscriber count.")
+        st.error("Failed to load subscriber list.")
 
 
 
