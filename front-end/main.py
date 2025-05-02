@@ -18,24 +18,6 @@ r4col1, r4col2, r4col3 = st.columns([1, 2, 1])
 r5col1, r5col2, r5col3 = st.columns([1, 2, 1])
 
 
-# Sidebar 
-menuOptions = []
-st.sidebar.title("Navigation")
-st.sidebar.image("front-end/header-logo.svg")
-menuOptions.extend(["Subscription Status", "BlankSite"])
-selected_page = st.sidebar.radio("", options=menuOptions)
-
-
-
-
-
-
-
-if selected_page == menuOptions[0]:
-    with r1col1:
-      st.title("Subscription Status")
-    spawn_status_widgets()
-
 
 def spawn_status_widgets():
     url = f"{BASE_URL}/get-subscriber-count"
@@ -50,6 +32,27 @@ def spawn_status_widgets():
     else:
         st.error("Failed to load subscriber count.")
         
+
+
+
+
+# Sidebar 
+menuOptions = []
+st.sidebar.title("Navigation")
+st.sidebar.image("front-end/header-logo.svg")
+menuOptions.extend(["Subscription Status", "BlankSite"])
+selected_page = st.sidebar.radio("", options=menuOptions)
+
+
+
+
+
+
+if selected_page == menuOptions[0]:
+    with r1col1:
+      st.title("Subscription Status")
+    spawn_status_widgets()
+
 
 
 
