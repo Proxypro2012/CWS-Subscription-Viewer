@@ -47,3 +47,19 @@ def get_subscriber_count():
     except Exception as e:
         print("Error:", e)
         return jsonify({"error": "Failed to count subscribers"}), 500
+
+
+
+def load_subscribers():
+    try:
+        with open("subscription-status.json", "r") as file:
+            return json.load(file)  # Load the JSON data from the file
+    except FileNotFoundError:
+        return []  # Return an empty list if the file is not found
+    except json.JSONDecodeError:
+        return []  # Return an empty list if there's an error decoding the JSON
+
+@app.route('/get-subscriber-list', methods=['GET'])
+def get_subscriber_list():
+    subscribers = load_subscribers()  # Load the subscriber data
+    return jsonify(subscribers)  # Return the list of subscribers as JSON
