@@ -26,12 +26,14 @@ def spawn_status_widgets():
     response = requests.get(url)
 
     if response.status_code == 200:
-        users = response.json()
+        users = response.json()  # list of subscriber objects
 
         for i, user in enumerate(users):
-            with st.status(f"{user['name']}'s Subscription", expanded=False):
-                st.write(f"**Status:** {user['status'].capitalize()}")
-                st.write(f"**Expires:** {user['expires']}")
+            with st.status(f"{user['name']}'s Status", expanded=True):
+                st.write("🔍 Fetching status...")
+                time.sleep(0.5)
+                st.write(f"📄 Status: {user['status']}")
+                st.write(f"📅 Expires: {user['expires']}")
     else:
         st.error("Failed to load subscriber list.")
 
