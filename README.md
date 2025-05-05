@@ -1,4 +1,4 @@
-<p align="center">#CWS SUBSCRIPTION VIEWER</p>   
+<p align="center">CWS SUBSCRIPTION VIEWER</p>   
 
 
 
