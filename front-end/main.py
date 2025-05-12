@@ -2,7 +2,10 @@ import time
 import streamlit as st
 import streamlit.components.v1 as components
 import requests
+import calendar
 
+
+months = list(calendar.month_name)[1:]
 
 
 st.set_page_config(
@@ -32,8 +35,9 @@ def spawn_status_widgets():
 
         for i, user in enumerate(users):
             with st.status(f"{user['name']}'s Status", expanded=True):
-                st.write(f"📄 Status: {user['status']}")
-                st.write(f"📅 Expires: {user['expires']}")
+                selected_month = st.selectbox("Select a month", months)
+                st.write(f"You selected: {selected_month}")
+
     else:
         st.error("Failed to load subscriber list.")
 
