@@ -3,15 +3,6 @@ import json
 
 app = Flask(__name__)
 
-from flask import Flask, request, jsonify
-import json
-
-app = Flask(__name__)
-
-from flask import Flask, request, jsonify
-import json
-
-app = Flask(__name__)
 
 @app.route('/get-subscription-status', methods=['GET'])
 def get_subscription_status():
@@ -103,3 +94,7 @@ def load_subscribers():
 def get_subscriber_list():
     subscribers = load_subscribers()  # Load the subscriber data
     return jsonify(subscribers)  # Return the list of subscribers as JSON
+
+@app.route('/get-subcriber-years')
+def get_subscriber_year():
+    person = request.args.get('person')
