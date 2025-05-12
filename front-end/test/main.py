@@ -7,7 +7,20 @@ r1col1, r1col2, r1col3 = st.columns([1, 2, 1])
 r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
 r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-
+months = {
+  "1" : "January",
+  "2" : "Febuary",
+  "3" : "March",
+  "4" : "April",
+  "5" : "May",
+  "6" : "June",
+  "7" : "July",
+  "8" : "August",
+  "9" : "September",
+  "10" : "October",
+  "11" : "November",
+  "12" : "December",
+}
 
 with r1col2:
   st.title("Date Picker Test")
