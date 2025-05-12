@@ -29,18 +29,17 @@ def spawn_status_widgets():
     url = f"{BASE_URL}/get-subscriber-list"
     response = requests.get(url)
 
-
     if response.status_code == 200:
         users = response.json()
 
         for i, user in enumerate(users):
             with st.status(f"{user['name']}'s Status", expanded=True):
-                selected_month = st.selectbox("Select a month", months)
+                selected_month = st.selectbox(
+                    "Select a month", months, key=f"month_select_{user['name']}_{i}"
+                )
                 st.write(f"You selected: {selected_month}")
-
     else:
         st.error("Failed to load subscriber list.")
-
 
 
 
