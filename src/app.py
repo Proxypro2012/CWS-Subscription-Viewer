@@ -10,6 +10,8 @@ def get_subscription_status():
 
     if not person:
         return jsonify({"error": "Missing 'person' parameter"}), 400
+    elif not month:
+        return jsonify({"error": "Missing 'month' parameter"}), 400
 
     try:
         with open("subscription-status.json", 'r') as file:
