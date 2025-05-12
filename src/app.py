@@ -3,6 +3,11 @@ import json
 
 app = Flask(__name__)
 
+from flask import Flask, request, jsonify
+import json
+
+app = Flask(__name__)
+
 @app.route('/get-subscription-status', methods=['GET'])
 def get_subscription_status():
     person = request.args.get('person')
@@ -10,25 +15,34 @@ def get_subscription_status():
 
     if not person:
         return jsonify({"error": "Missing 'person' parameter"}), 400
-    elif not month:
+    if not month:
         return jsonify({"error": "Missing 'month' parameter"}), 400
 
     try:
         with open("subscription-status.json", 'r') as file:
-            status = json.load(file)
+            data = json.load(file)
 
-        for user in status:
-            if user["name"].lower() == person.lower():  # case-insensitive match
-                return jsonify({
-                    "name": user["name"],
-                    "status": user["status"],
-                    "expires": user["expires"]
-                })
+        for user in data:
+            if user["name"].lower() == person.lower():
+                subscriptions = user.get("subscriptions", {})
+                month_data = subscriptions.get(month)
+                
+                if month_data:
+                    return jsonify({
+                        "name": user["name"],
+                        "month": month,
+                        "status": month_data["status"],
+                        "expires": month_data["expires"]
+                    })
+                else:
+                    return jsonify({"error": f"No subscription data found for {month}"}), 404
 
         return jsonify({"error": "User not found"}), 404
+
     except Exception as e:
         print("Server error:", e)
         return jsonify({"error": "Internal server error"}), 500
+
 
 
 
