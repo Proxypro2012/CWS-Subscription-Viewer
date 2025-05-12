@@ -12,11 +12,10 @@ app = Flask(__name__)
 def get_subscription_status():
     person = request.args.get('person')
     month = request.args.get('month')
+    year = request.args.get('year')
 
     if not person:
         return jsonify({"error": "Missing 'person' parameter"}), 400
-    if not month:
-        return jsonify({"error": "Missing 'month' parameter"}), 400
 
     try:
         with open("subscription-status.json", 'r') as file:
@@ -25,11 +24,13 @@ def get_subscription_status():
         for user in data:
             if user["name"].lower() == person.lower():
                 subscriptions = user.get("subscriptions", {})
-                month_data = subscriptions.get(month)
+                year_data = subscriptions.get(year)
+                month_data = year_data[month]
                 
                 if month_data:
                     return jsonify({
                         "name": user["name"],
+                        "year" : year,
                         "month": month,
                         "status": month_data["status"],
                         "expires": month_data["expires"]
