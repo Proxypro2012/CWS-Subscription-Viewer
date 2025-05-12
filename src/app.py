@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/get-subscription-status', methods=['GET'])
 def get_subscription_status():
-    person = request.args.get('person')  # GET param ?person=Kabir
+    person = request.args.get('person')
+    month = request.args.get('month')
 
     if not person:
         return jsonify({"error": "Missing 'person' parameter"}), 400
