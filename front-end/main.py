@@ -76,6 +76,8 @@ if selected_page == menuOptions[0]:
             user for user in users if search_query in user['name'].lower()
     ] if search_query else users
 
+    st.divider()
+
 
     for i in range(10):
         st.write("")
