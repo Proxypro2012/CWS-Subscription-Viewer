@@ -17,3 +17,10 @@ with r3col2:
   selected_date = st.date_input("Pick a date", datetime.date.today())
   st.write("You selected:", selected_date)
 
+  # ASSIGNING VALUES
+  month = str(selected_date).strip(/)[1]
+  year = str(selected_date).strip(/)[0]
+
+  st.write(year)
+  st.write(month)
+
