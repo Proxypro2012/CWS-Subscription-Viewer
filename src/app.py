@@ -95,6 +95,28 @@ def get_subscriber_list():
     subscribers = load_subscribers()  # Load the subscriber data
     return jsonify(subscribers)  # Return the list of subscribers as JSON
 
-@app.route('/get-subcriber-years')
+
+
+
+@app.route('/get-subcriber-years', methods=['GET'])
 def get_subscriber_year():
     person = request.args.get('person')
+
+    if not person:
+        return jsonify({"error": "Missing 'person' parameter"}), 400
+
+    try:
+        with open("subscription-status.json", 'r') as file:
+            data = json.load(file)
+
+        for user in data:
+            if user["name"].lower() == person.lower():
+                subscriptions = user.get("subscriptions", {})
+                years = list(subscriptions.keys())
+                return jsonify({"person": user["name"], "years": years})
+
+        return jsonify({"error": "User not found"}), 404
+
+    except Exception as e:
+        print("Server error:", e)
+        return jsonify({"error": "Internal server error"}), 500
