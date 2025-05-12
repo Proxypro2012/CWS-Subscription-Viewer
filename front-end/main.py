@@ -39,9 +39,17 @@ def spawn_status_widgets():
                     "Select a month", months, key=f"month_select_{user['name']}_{i}"
                 )
 
-                years = str(f"{BASE_URL}/get-subscriber-years?person={user['name']}").get('years')
+                url = f"{BASE_URL}/get-subscriber-years?person={user['name']}"
+                response = requests.get(url)
+                
+                # Check if the request was successful
+                if response.status_code == 200:
+                    # Extract the 'years' from the JSON response
+                    data = response.json()
+                    years = data.get('years', [])  # Default to empty list if 'years' is not present
         
                 selected_year = st.selectbox("Select a year", years, key=f"year_select_{user['name']}_{i}")
+                
                 st.write(f"You selected: {selected_year}")
                 st.write(f"You selected: {selected_month}")
                 
