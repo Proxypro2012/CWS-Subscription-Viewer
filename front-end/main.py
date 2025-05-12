@@ -32,7 +32,16 @@ def spawn_status_widgets():
     if response.status_code == 200:
         users = response.json()
 
-        for i, user in enumerate(users):
+        # Add search box at the top
+        search_query = st.text_input("🔍 Search subscriber").lower().strip()
+
+        # Filter users by name
+        filtered_users = [
+            user for user in users if search_query in user['name'].lower()
+        ] if search_query else users
+
+        # Show status widgets for each filtered user
+        for i, user in enumerate(filtered_users):
             with st.status(f"{user['name']}'s Status", expanded=True):
                 selected_month = st.selectbox(
                     "Select a month", months, key=f"month_select_{user['name']}_{i}"
@@ -40,6 +49,7 @@ def spawn_status_widgets():
                 st.write(f"You selected: {selected_month}")
     else:
         st.error("Failed to load subscriber list.")
+
 
 
 
