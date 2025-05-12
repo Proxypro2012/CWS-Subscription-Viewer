@@ -97,8 +97,7 @@ def get_subscriber_list():
 
 
 
-
-@app.route('/get-subcriber-years', methods=['GET'])
+@app.route('/get-subscriber-years', methods=['GET'])
 def get_subscriber_year():
     person = request.args.get('person')
 
@@ -109,7 +108,13 @@ def get_subscriber_year():
         with open("subscription-status.json", 'r') as file:
             data = json.load(file)
 
+        # Debug: Print out the loaded data to check if the file is being read correctly
+        print(f"Loaded data: {data}")
+
         for user in data:
+            # Debug: Print the names to check for case-sensitivity or extra spaces
+            print(f"Checking user: {user['name']}, looking for {person}")
+            
             if user["name"].lower() == person.lower():
                 subscriptions = user.get("subscriptions", {})
                 years = list(subscriptions.keys())
@@ -120,3 +125,4 @@ def get_subscriber_year():
     except Exception as e:
         print("Server error:", e)
         return jsonify({"error": "Internal server error"}), 500
+
