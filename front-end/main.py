@@ -62,6 +62,13 @@ if selected_page == menuOptions[0]:
       st.title("Subscription Status")
     st.divider()
 
+    url = f"{BASE_URL}/get-subscriber-list"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        users = response.json()
+
+
     search_query = st.text_input("🔍 Search subscriber").lower().strip()
 
         # Filter users by name
