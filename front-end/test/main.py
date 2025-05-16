@@ -1,11 +1,22 @@
 import streamlit as st
 import datetime
 
-
+# Page configuration
+st.set_page_config(
+    layout="wide",
+    page_title="TEST CWS Subscription Viewer",
+    initial_sidebar_state="expanded"
+)
 
 r1col1, r1col2, r1col3 = st.columns([1, 2, 1])
 r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
 r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
+
+
+
+# Sidebar
+menuOptions = ["Date Picker Test", "Modal Dailog (Popup)"]
+selected_page = st.sidebar.radio("", options=menuOptions)
 
 months = {
   "1" : "January",
