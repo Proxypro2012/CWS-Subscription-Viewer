@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+from annotated_text import annotated_text
 
 # Page configuration
 st.set_page_config(
@@ -15,7 +16,7 @@ r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
 
 # Sidebar
-menuOptions = ["Date Picker Test", "Modal Dailog (Popup)"]
+menuOptions = ["Date Picker Test", "Modal Dailog (Popup)", "Annotated Text"]
 selected_page = st.sidebar.radio("", options=menuOptions)
 
 months = {
@@ -66,4 +67,22 @@ elif selected_page == menuOptions[1]:
             vote("B")
     else:
         f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
+
+elif selected_page == menuOptions[2]:
+  
+  annotated_text(
+      "This ",
+      ("is", "verb"),
+      " some ",
+      ("annotated", "adj"),
+      ("text", "noun"),
+      " for those of ",
+      ("you", "pronoun"),
+      " who ",
+      ("like", "verb"),
+      " this sort of ",
+      ("thing", "noun"),
+      "."
+  )
+    
 
