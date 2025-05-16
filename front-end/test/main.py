@@ -33,18 +33,37 @@ months = {
   "12" : "December",
 }
 
-with r1col2:
-  st.title("Date Picker Test")
-with r2col2:
-  st.divider()
-with r3col2:
-  selected_date = st.date_input("Pick a date", datetime.date.today())
-  st.write("You selected:", selected_date)
-
-  # ASSIGNING VALUES
-  month = selected_date.month   #str(selected_date).strip('-')[1]
-  year =  selected_date.year   #str(selected_date).strip('-')[0]
-
-  st.write(year)
-  st.write(month)
+if selected_page == menuOptions[0]:
+    with r1col2:
+      st.title("Date Picker Test")
+    with r2col2:
+      st.divider()
+    with r3col2:
+      selected_date = st.date_input("Pick a date", datetime.date.today())
+      st.write("You selected:", selected_date)
+    
+      # ASSIGNING VALUES
+      month = selected_date.month   #str(selected_date).strip('-')[1]
+      year =  selected_date.year   #str(selected_date).strip('-')[0]
+    
+      st.write(year)
+      st.write(month)
+elif selected_page == menuOptions[1]:
+    
+    @st.dialog("Cast your vote")
+    def vote(item):
+        st.write(f"Why is {item} your favorite?")
+        reason = st.text_input("Because...")
+        if st.button("Submit"):
+            st.session_state.vote = {"item": item, "reason": reason}
+            st.rerun()
+    
+    if "vote" not in st.session_state:
+        st.write("Vote for your favorite")
+        if st.button("A"):
+            vote("A")
+        if st.button("B"):
+            vote("B")
+    else:
+        f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
 
