@@ -50,7 +50,7 @@ if selected_page == menuOptions[0]:
     
       st.write(year)
       st.write(month)
-elif selected_page == menuOptions[1]:
+if selected_page == menuOptions[1]:
     
     @st.dialog("Cast your vote")
     def vote(item):
@@ -69,8 +69,8 @@ elif selected_page == menuOptions[1]:
     else:
         f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
 
-elif selected_page == menuOptions[2]:
-
+if selected_page == menuOptions[2]:
+  
   annotated_text(
       "This ",
       ("is", "verb"),
