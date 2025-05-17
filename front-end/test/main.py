@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 from annotated_text import annotated_text
 from streamlit_timeline import timeline
+import json
 
 # Page configuration
 st.set_page_config(
@@ -87,8 +88,26 @@ if selected_page == menuOptions[2]:
   )
     
 elif selected_page == menuOptions[3]:
-    with open('/front-end/test/example.json', "r") as f:
-      data = f.read()
+    data = {
+        "title": {
+            "text": {
+                "headline": "App Timeline",
+                "text": "Timeline of major events"
+            }
+        },
+        "events": [
+            {
+                "start_date": {
+                    "year": 2025,
+                    "month": 5,
+                    "day": 16
+                },
+                "text": {
+                    "headline": "Error Debugging",
+                    "text": "We resolved the file not found error."
+                }
+            }
+        ]
+    }
 
-  # render timeline
-    timeline(data, height=800)
+    timeline(json.dumps(data), height=600)
