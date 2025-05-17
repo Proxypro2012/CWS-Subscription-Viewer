@@ -1,6 +1,7 @@
 import streamlit as st
 import datetime
 from annotated_text import annotated_text
+from streamlit_timeline import timeline
 
 # Page configuration
 st.set_page_config(
@@ -16,7 +17,7 @@ r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
 
 # Sidebar
-menuOptions = ["Date Picker Test", "Modal Dailog (Popup)", "Annotated Text"]
+menuOptions = ["Date Picker Test", "Modal Dailog (Popup)", "Annotated Text", "Timeline"]
 selected_page = st.sidebar.radio("", options=menuOptions)
 
 months = {
@@ -69,7 +70,7 @@ elif selected_page == menuOptions[1]:
         f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
 
 elif selected_page == menuOptions[2]:
-  
+
   annotated_text(
       "This ",
       ("is", "verb"),
@@ -85,4 +86,9 @@ elif selected_page == menuOptions[2]:
       "."
   )
     
+elif selected_page == menuOptions[3]:
+    with open('example.json', "r") as f:
+      data = f.read()
 
+  # render timeline
+    timeline(data, height=800)

@@ -1,0 +1,21 @@
+{
+  "title": {
+    "text": {
+      "headline": "My Timeline",
+      "text": "A summary of events"
+    }
+  },
+  "events": [
+    {
+      "start_date": {
+        "year": 2023,
+        "month": 5,
+        "day": 16
+      },
+      "text": {
+        "headline": "Event Title",
+        "text": "Detailed description of the event"
+      }
+    }
+  ]
+}
