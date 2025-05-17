@@ -87,7 +87,7 @@ if selected_page == menuOptions[2]:
   )
     
 elif selected_page == menuOptions[3]:
-    with open('example.json', "r") as f:
+    with open('/front-end/test/example.json', "r") as f:
       data = f.read()
 
   # render timeline
