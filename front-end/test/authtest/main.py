@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 from streamlit_extras.let_it_rain import rain
+from streamlit_navigation_bar import st_navbar
 
 # Page configuration
 st.set_page_config(page_title="CWS Subscription Viewer")
@@ -15,11 +16,6 @@ if "logged_in" not in st.session_state:
 
 def login():
     # UI Layout
-
-    for i in range(5):
-        st.write("")
-
-    
     r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
@@ -60,7 +56,7 @@ def login():
 
 
 def dashboard():
-    r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
+    r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
     r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
@@ -71,7 +67,9 @@ def dashboard():
         st.divider()
         
         
-        
+
+
+
         
 if not st.session_state.logged_in:
     # Show login page if not logged in
