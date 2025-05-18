@@ -3,4 +3,5 @@ requests
 datetime
 st-annotated-text
 streamlit-timeline
+streamlit-extras
 
