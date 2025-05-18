@@ -13,6 +13,10 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 
+if "show_homepage" not in st.session_state:
+    st.session_state.show_homepage = 1
+
+
 
 def login():
     # UI Layout
@@ -71,10 +75,10 @@ def dashboard():
 
 
 def homepage():
-    r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
-    r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
-    r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
-    r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
+    r1col1, r1col2, r1col3 = st.columns([1, 2, 1])
+    r2col1, r2col2, r2col3 = st.columns([1, 2, 1])
+    r3col1, r3col2, r3col3 = st.columns([1, 2, 1])
+    r4col1, r4col2, r4col3 = st.columns([1, 2, 1])
 
     with r1col2:
         st.title("Home Page")
@@ -85,7 +89,7 @@ def homepage():
     with r3col2:
         if st.button("Login", type="primary"):
             if not st.session_state.logged_in:
-                st.rerun(scope="app")
+                st.session_state.show_homepage = 0
                 login()
             else:
                 dashboard()
@@ -96,6 +100,5 @@ def homepage():
     rain('•', 20, falling_speed=5, animation_length="infinite")
 
 
-
-homepage()
-        
+if st.session_state.show_homepage == 1:
+    homepage()
