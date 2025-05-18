@@ -44,6 +44,19 @@ with r4col2:
         except Exception as e:
             st.error(f"Request failed: {e}")
 
+    else:
+        # Once logged in, show organization name
+        with r1col2:
+            st.title(f"{st.session_state.org_name}")
+
+        # Add a line below the organization's name
+        st.write("---")
+
+        # You can add more content here related to the organization
+        st.write(f"Welcome to {st.session_state.org_name}'s dashboard!")
+
+
+
 
 # Trigger the rain
 rain('•', 20, falling_speed=5, animation_length="infinite")
