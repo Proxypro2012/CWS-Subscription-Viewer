@@ -81,10 +81,16 @@ def homepage():
     with r2col2:
         st.divider()
         st.write("Welcome to the SBM Website!")
+    
+    with r3col2:
+        if not st.session_state.logged_in:
+            login()
+        else:
+            dashboard()
+    
+    rain('•', 20, falling_speed=5, animation_length="infinite")
+
+
+
+homepage()
         
-if not st.session_state.logged_in:
-    # Show login page if not logged in
-    login()
-else:
-    # Show dashboard page if logged in
-    dashboard()
