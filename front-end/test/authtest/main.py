@@ -31,8 +31,8 @@ with r4col2:
         
         try:
             response = requests.post(f"{BASE_URL}/login", json=creds)
-            st.write(f"Response status: {response.status_code}")
-            st.write(response.text)  # Show full response for debugging
+            # st.write(f"Response status: {response.status_code}")
+            # st.write(response.text)  # Show full response for debugging
 
             if response.status_code == 200:
                 st.success("Login successful!")
