@@ -83,17 +83,14 @@ def homepage():
         st.write("Welcome to the SBM Website!")
     with r3col2:
         if st.button("Login", type="primary"):
-            st.session_state.logged_in = False
-            st.session_state.username = ""
-            st.session_state.password = ""
-            st.experimental_rerun()
+            if not st.session_state.logged_in:
+   
+                login()
+            else:
+                # Show dashboard page if logged in
+                dashboard()
+                
     with r4col2:
         if st.button("Sign Up", type="primary"):
             pass
         
-if not st.session_state.logged_in:
-    # Show login page if not logged in
-    login()
-else:
-    # Show dashboard page if logged in
-    dashboard()
