@@ -4,4 +4,4 @@ datetime
 st-annotated-text
 streamlit-timeline
 streamlit-extras
-
+streamlit-navigation-bar
