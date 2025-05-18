@@ -1,32 +1,41 @@
 import streamlit as st
-import datetime
-from annotated_text import annotated_text
-from streamlit_timeline import timeline
-import json
+import requests
 from streamlit_extras.let_it_rain import rain
 
 # Page configuration
-st.set_page_config(
-    page_title="2 TEST CWS Subscription Viewer",
-)
+st.set_page_config(page_title="CWS Subscription Viewer")
 
+BASE_URL = "https://cws-subscription-viewer.onrender.com"
 
-
+# UI Layout
 r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
 r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
 r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 
-
+# Initialize login state
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
 with r1col2:
     st.title("Login")
+
 with r2col2:
-    st.session_state.username = st.text_input("Username", placeholder="Enter your username")
+    username = st.text_input("Username", placeholder="Enter your username")
 with r3col2:
-    st.session_state.password = st.text_input("Password", placeholder="Enter your password", type="password")
+    password = st.text_input("Password", placeholder="Enter your password", type="password")
+
 with r4col2:
-    st.button("Login", type="primary")
+    if st.button("Login", type="primary"):
+        creds = {"username": username, "password": password}
+        response = requests.post(f"{BASE_URL}/login", json=creds)
+        if response.status_code == 200:
+            st.success("Login successful!")
+            st.session_state.logged_in = True
+            st.session_state.username = username
+            st.session_state.password = password
+        else:
+            st.error("Login failed. Please check your credentials.")
     
 
 # Trigger the rain
