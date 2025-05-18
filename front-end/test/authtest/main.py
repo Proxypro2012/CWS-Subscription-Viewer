@@ -8,6 +8,8 @@ st.set_page_config(page_title="CWS Subscription Viewer")
 BASE_URL = "https://cws-subscription-viewer.onrender.com"
 
 
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
 
 
@@ -18,9 +20,7 @@ def login():
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
     r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 
-    # Initialize login state
-    if "logged_in" not in st.session_state:
-        st.session_state.logged_in = False
+
 
     with r1col2:
         st.title("Login")
