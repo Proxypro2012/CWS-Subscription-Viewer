@@ -7,60 +7,55 @@ st.set_page_config(page_title="CWS Subscription Viewer")
 
 BASE_URL = "https://cws-subscription-viewer.onrender.com"
 
-# UI Layout
-r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
-r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
-r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
-r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
-
-# Initialize login state
+# Initialize session state for login
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
-
 
 if "org_name" not in st.session_state:
     st.session_state.org_name = ""
 
-with r1col2:
-    st.title("Login")
 
-with r2col2:
+
+# Function to display login page
+def login_page():
+    st.title("Login Page")
+    
     username = st.text_input("Username", placeholder="Enter your username")
-with r3col2:
     password = st.text_input("Password", placeholder="Enter your password", type="password")
-
-with r4col2:
-    if st.button("Login", type="primary"):
+    
+    if st.button("Login"):
         creds = {"username": username, "password": password}
+        response = requests.post(f"{BASE_URL}/login", json=creds)
         
-        try:
-            response = requests.post(f"{BASE_URL}/login", json=creds)
-            # st.write(f"Response status: {response.status_code}")
-            # st.write(response.text)  # Show full response for debugging
+        if response.status_code == 200:
+            st.session_state.logged_in = True
+            st.session_state.org_name = username  # Storing the organization name in session
+            st.success("Login successful!")
+            # No need to rerun, the app will automatically switch to dashboard
+        else:
+            st.error("Login failed. Please check your credentials.")
 
-            if response.status_code == 200:
-                st.success("Login successful!")
-                st.session_state.logged_in = True
-                st.session_state.username = username
-                st.session_state.password = password
-            else:
-                st.error("Login failed. Please check your credentials.")
-        except Exception as e:
-            st.error(f"Request failed: {e}")
+# Function to display dashboard page after successful login
+def dashboard_page():
+    st.title(f"Welcome to {st.session_state.org_name}'s Dashboard")
+    
+    # Add a line below the title
+    st.write("---")
+    
+    # You can add more dashboard content here related to the organization
+    st.write(f"Welcome to {st.session_state.org_name}'s dashboard!")
+    
+    # Example of displaying some additional data or subscription status here:
+    # st.write("Subscription details can go here...")
 
-    else:
-        # Once logged in, show organization name
-        with r1col2:
-            st.title(f"{st.session_state.org_name}")
-
-        # Add a line below the organization's name
-        st.write("---")
-
-        # You can add more content here related to the organization
-        st.write(f"Welcome to {st.session_state.org_name}'s dashboard!")
+    # Trigger the rain effect on the page
+    rain('•', 20, falling_speed=5, animation_length="infinite")
 
 
-
-
-# Trigger the rain
-rain('•', 20, falling_speed=5, animation_length="infinite")
+# Check the login status and display the appropriate page
+if st.session_state.logged_in:
+    # Show the dashboard page if logged in
+    dashboard_page()
+else:
+    # Show login page if not logged in
+    login_page()
