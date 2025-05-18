@@ -30,9 +30,4 @@ with r4col2:
     
 
 # Trigger the rain
-rain(
-    emoji="•",       # Use your emoji here
-    font_size=54,    # Adjust the size as needed
-    falling_speed=5, # Optional: adjust speed
-    animation_length="infinite"  # Optional: or use a number like 10
-)
+rain('•', 20, falling_speed=5, animation_length="infinite")
