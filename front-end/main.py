@@ -53,7 +53,7 @@ def spawn_status_widgets(filtered_users):
 # Main content
 if selected_page == "Subscription Status":
     with r1col1:
-        st.title("Subscription Status")
+        st.title("CWS Subscription Status")
     st.divider()
 
     # Get subscriber list
