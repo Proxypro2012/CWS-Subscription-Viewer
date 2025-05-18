@@ -17,10 +17,6 @@ r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-
-if "org_name" not in st.session_state:
-    st.session_state.org_name = ""
-
 with r1col2:
     st.title("Login")
 
@@ -47,19 +43,6 @@ with r4col2:
                 st.error("Login failed. Please check your credentials.")
         except Exception as e:
             st.error(f"Request failed: {e}")
-
-    else:
-        # Once logged in, show organization name
-        with r1col2:
-            st.title(f"{st.session_state.org_name}")
-
-        # Add a line below the organization's name
-        st.write("---")
-
-        # You can add more content here related to the organization
-        st.write(f"Welcome to {st.session_state.org_name}'s dashboard!")
-
-
 
 
 # Trigger the rain
