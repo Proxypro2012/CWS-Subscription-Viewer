@@ -32,7 +32,7 @@ def homepage():
     with r3col2:
         if st.button("Login", type="primary", key="home_page"):
             st.session_state.page = "login"
-            st.experimental_rerun()
+            st.rerun()
     with r4col2:
         if st.button("Sign Up", type="primary"):
             st.info("Sign up is not implemented yet.")
@@ -66,7 +66,7 @@ def login():
                     st.session_state.username = username
                     st.session_state.password = password
                     st.session_state.page = "dashboard"
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.error("Login failed. Please check your credentials.")
             except Exception as e:
