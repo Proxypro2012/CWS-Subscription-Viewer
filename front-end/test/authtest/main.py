@@ -22,9 +22,9 @@ r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 with r1col2:
     st.title("Login")
 with r2col2:
-    st.text_input("Username", placeholder="Enter your username")
+    st.session_state.username = st.text_input("Username", placeholder="Enter your username")
 with r3col2:
-    st.text_input("Password", placeholder="Enter your password", type="password")
+    st.session_state.password = st.text_input("Password", placeholder="Enter your password", type="password")
 with r4col2:
     st.button("Login", type="primary")
     
