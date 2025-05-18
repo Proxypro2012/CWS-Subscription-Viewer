@@ -85,9 +85,6 @@ def dashboard():
         st.divider()
     with r2col2:
         st.write("You can add user-specific or subscription data here.")
-    with r3col2:
-        if st.button("Sign Up", type="primary"):
-            st.info("Sign up is not implemented yet.")
             
 
 
