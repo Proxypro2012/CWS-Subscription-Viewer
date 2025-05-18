@@ -81,16 +81,10 @@ def homepage():
     with r2col2:
         st.divider()
         st.write("Welcome to the SBM Website!")
-    with r3col2:
-        if st.button("Login", type="primary"):
-            if not st.session_state.logged_in:
-   
-                login()
-            else:
-                # Show dashboard page if logged in
-                dashboard()
-                
-    with r4col2:
-        if st.button("Sign Up", type="primary"):
-            pass
         
+if not st.session_state.logged_in:
+    # Show login page if not logged in
+    login()
+else:
+    # Show dashboard page if logged in
+    dashboard()
