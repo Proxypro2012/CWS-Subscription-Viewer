@@ -28,15 +28,22 @@ with r3col2:
 with r4col2:
     if st.button("Login", type="primary"):
         creds = {"username": username, "password": password}
-        response = requests.post(f"{BASE_URL}/login", json=creds)
-        if response.status_code == 200:
-            st.success("Login successful!")
-            st.session_state.logged_in = True
-            st.session_state.username = username
-            st.session_state.password = password
-        else:
-            st.error("Login failed. Please check your credentials.")
-    
+        
+        try:
+            response = requests.post(f"{BASE_URL}/login", json=creds)
+            st.write(f"Response status: {response.status_code}")
+            st.write(response.text)  # Show full response for debugging
+
+            if response.status_code == 200:
+                st.success("Login successful!")
+                st.session_state.logged_in = True
+                st.session_state.username = username
+                st.session_state.password = password
+            else:
+                st.error("Login failed. Please check your credentials.")
+        except Exception as e:
+            st.error(f"Request failed: {e}")
+
 
 # Trigger the rain
 rain('•', 20, falling_speed=5, animation_length="infinite")
