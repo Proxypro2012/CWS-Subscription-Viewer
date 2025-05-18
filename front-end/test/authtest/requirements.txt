@@ -1,0 +1,6 @@
+streamlit==1.45.0
+requests
+datetime
+st-annotated-text
+streamlit-timeline
+
