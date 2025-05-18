@@ -30,7 +30,7 @@ def homepage():
         st.divider()
         st.write("Welcome to the SBM Website!")
     with r3col2:
-        if st.button("Login", type="primary"):
+        if st.button("Login", type="primary", key="home_page"):
             st.session_state.page = "login"
             st.experimental_rerun()
     with r4col2:
@@ -56,7 +56,7 @@ def login():
     with r3col2:
         password = st.text_input("Password", placeholder="Enter your password", type="password")
     with r4col2:
-        if st.button("Login", type="primary"):
+        if st.button("Login", type="primary", key="login_page"):
             creds = {"username": username, "password": password}
             try:
                 response = requests.post(f"{BASE_URL}/login", json=creds)
@@ -86,12 +86,9 @@ def dashboard():
     with r2col2:
         st.write("You can add user-specific or subscription data here.")
     with r3col2:
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            st.session_state.username = ""
-            st.session_state.password = ""
-            st.session_state.page = "home"
-            st.experimental_rerun()
+        if st.button("Sign Up", type="primary"):
+            st.info("Sign up is not implemented yet.")
+            
 
 
 # --- Routing ---
