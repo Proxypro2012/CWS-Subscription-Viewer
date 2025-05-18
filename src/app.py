@@ -5,8 +5,15 @@ from functools import wraps
 app = Flask(__name__)
 
 def load_data():
-    with open("subscription-status.json", "r") as f:
-        return json.load()["organizations"]
+    try:
+        # Open the correct file where user data is stored
+        with open('subscription-status.json', 'r') as file:
+            data = json.load(file)
+            return data["organizations"]  # Ensure the structure is correct in your JSON file
+    except FileNotFoundError:
+        return {"error": "Data file not found"}
+    except json.JSONDecodeError:
+        return {"error": "Error decoding JSON file"}
 
 # Decorator for authentication
 def require_login(f):
