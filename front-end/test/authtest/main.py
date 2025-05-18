@@ -83,10 +83,14 @@ def homepage():
         st.write("Welcome to the SBM Website!")
     
     with r3col2:
-        if not st.session_state.logged_in:
-            login()
-        else:
-            dashboard()
+        if st.button("Login", type="primary"):
+            if not st.session_state.logged_in:
+                login()
+            else:
+                dashboard()
+    with r4col2:
+        if st.button("Sign Up", type="primary"):
+            pass
     
     rain('•', 20, falling_speed=5, animation_length="infinite")
 
