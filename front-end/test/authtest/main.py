@@ -85,6 +85,7 @@ def homepage():
     with r3col2:
         if st.button("Login", type="primary"):
             if not st.session_state.logged_in:
+                st.rerun(scope="app")
                 login()
             else:
                 dashboard()
