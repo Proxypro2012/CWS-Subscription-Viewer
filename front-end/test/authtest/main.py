@@ -21,7 +21,8 @@ def login():
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
     r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 
-
+    for i in range(5):
+        st.write("")
 
     with r1col2:
         st.title("Login")
