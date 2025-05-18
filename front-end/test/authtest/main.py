@@ -17,6 +17,10 @@ r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
+
+if "org_name" not in st.session_state:
+    st.session_state.org_name = ""
+
 with r1col2:
     st.title("Login")
 
