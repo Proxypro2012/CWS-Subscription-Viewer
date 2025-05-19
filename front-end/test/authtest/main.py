@@ -19,15 +19,19 @@ if "password" not in st.session_state:
 
 # --- Pages ---
 def homepage():
-    r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
+    r0col1, r0col2, r0col3 = st.columns([1, 0.5, 1])
+    r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
-    r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
-    r4col1, r4col2, r4col3 = st.columns([0.25, 4, 0.25])
+    r3col1, r3col2, r3col3 = st.columns([1, 2, 1])
+    r4col1, r4col2, r4col3 = st.columns([1, 2, 1])
+
+    with r0col2:
+        for i in range(10):
+            st.write("")
 
     with r1col2:
         st.title("Home Page")
     with r2col2:
-        st.divider()
         st.write("Welcome to the SBM Website!")
     with r3col2:
         if st.button("Login", type="primary", key="home_page"):
