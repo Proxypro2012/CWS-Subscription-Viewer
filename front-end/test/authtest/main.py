@@ -26,6 +26,17 @@ def homepage():
     r4col1, r4col2, r4col3 = st.columns([1.95, 2, 0.25])
     r5col1, r5col2, r5col3 = st.columns([2, 2, 1.8])
 
+
+    wide_button_css = """
+    <style>
+    div.stButton > button {
+        width: 100%;
+        height: 3em;
+        font-size: 1.1em;
+    }
+    </style>
+    """
+
     with r0col2:
         for i in range(10):
             st.write("")
