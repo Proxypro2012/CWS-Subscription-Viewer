@@ -40,8 +40,13 @@ def homepage():
             st.write("")  # Adjust as needed
 
     with col2:
-        st.title(" Home Page")
-        st.write("Welcome to the SBM Website!")
+        st.write("")  # Add spacing
+        st.write("")  # More spacing (or use st.empty if needed)
+
+        # Centered title and text using HTML
+        st.markdown('<h1 class="center-text">Home Page</h1>', unsafe_allow_html=True)
+        st.markdown('<p class="center-text">Welcome to the SBM Website!</p>', unsafe_allow_html=True)
+
 
         # Buttons
         if st.button("Login", type="primary", key="home_page"):
