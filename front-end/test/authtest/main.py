@@ -36,7 +36,7 @@ def homepage():
 
     # Add vertical space
     with col2:
-        for i in range(10):
+        for i in range(5):
             st.write("")  # Adjust as needed
 
     with col2:
