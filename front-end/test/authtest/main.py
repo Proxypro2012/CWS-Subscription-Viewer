@@ -24,6 +24,7 @@ def homepage():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([2, 2, 0.25])
     r4col1, r4col2, r4col3 = st.columns([1.95, 2, 0.25])
+    r5col1, r5col2, r5col3 = st.columns([2, 2, 2])
 
     with r0col2:
         for i in range(10):
@@ -39,7 +40,8 @@ def homepage():
             st.rerun()
     with r4col2:
         if st.button("Sign Up", type="primary"):
-            st.info("Sign up is not implemented yet.")
+            with r5col2:
+                st.info("Sign up is not implemented yet.")
     
     rain('•', 20, falling_speed=5, animation_length="infinite")
 
