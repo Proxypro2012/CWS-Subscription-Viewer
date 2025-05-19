@@ -19,14 +19,10 @@ if "password" not in st.session_state:
 
 # --- Pages ---
 def homepage():
-    r0col1, r0col2, r0col3 = st.columns([1, 0.5, 1])
-    r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
-    r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
-    r3col1, r3col2, r3col3 = st.columns([2, 2, 0.25])
-    r4col1, r4col2, r4col3 = st.columns([1.95, 2, 0.25])
-    r5col1, r5col2, r5col3 = st.columns([2, 2, 1.8])
+    # Centering helper: 3-column layout where the middle column contains all content
+    col1, col2, col3 = st.columns([1, 3, 1])
 
-
+    # Custom CSS for wide buttons (only applies to home page)
     wide_button_css = """
     <style>
     div.stButton > button {
@@ -38,24 +34,27 @@ def homepage():
     """
     st.markdown(wide_button_css, unsafe_allow_html=True)
 
-    with r0col2:
-        for i in range(10):
-            st.write("")
+    # Add vertical space
+    with col2:
+        st.write("\n" * 5)  # Adjust as needed
 
-    with r1col2:
-        st.title("Home Page")
-    with r2col2:
+    with col2:
+        st.title("🏠 Home Page")
         st.write("Welcome to the SBM Website!")
-    with r3col2:
+
+        # Buttons
         if st.button("Login", type="primary", key="home_page"):
             st.session_state.page = "login"
             st.rerun()
-    with r4col2:
+
         if st.button("Sign Up", type="primary"):
-            with r5col2:
-                st.info("Sign up is not implemented yet.")
-    
-    rain('•', 20, falling_speed=5, animation_length="infinite")
+            st.info("Sign up is not implemented yet.")
+
+    # Optional: add visual effect
+    try:
+        rain('•', 20, falling_speed=5, animation_length="infinite")
+    except Exception:
+        pass  # in case rain is undefined or external
 
 
 def login():
