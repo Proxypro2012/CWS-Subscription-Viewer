@@ -36,6 +36,7 @@ def homepage():
     }
     </style>
     """
+    st.markdown(wide_button_css, unsafe_allow_html=True)
 
     with r0col2:
         for i in range(10):
