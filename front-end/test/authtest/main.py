@@ -36,7 +36,8 @@ def homepage():
 
     # Add vertical space
     with col2:
-        st.write("\n" * 5)  # Adjust as needed
+        for i in range(5):
+            st.write("")  # Adjust as needed
 
     with col2:
         st.title("🏠 Home Page")
