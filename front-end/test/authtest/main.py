@@ -44,8 +44,12 @@ def homepage():
         st.write("")  # More spacing (or use st.empty if needed)
 
         # Centered title and text using HTML
-        st.markdown('<h1 class="center-text">Home Page</h1>', unsafe_allow_html=True)
-        st.markdown('<p class="center-text">Welcome to the SBM Website!</p>', unsafe_allow_html=True)
+        st.markdown("<br><br><br>", unsafe_allow_html=True)  # Vertical space
+
+        # Properly centered title and paragraph with inline style
+        st.markdown('<h1 style="text-align: center;">Home Page</h1>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center;">Welcome to the SBM Website!</p>', unsafe_allow_html=True)
+
 
 
         # Buttons
