@@ -40,8 +40,6 @@ def homepage():
             st.write("")  # Adjust as needed
 
     with col2:
-        st.write("")  # Add spacing
-        st.write("")  # More spacing (or use st.empty if needed)
 
         # Centered title and text using HTML
         st.markdown("<br><br><br>", unsafe_allow_html=True)  # Vertical space
