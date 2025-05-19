@@ -36,11 +36,11 @@ def homepage():
 
     # Add vertical space
     with col2:
-        for i in range(5):
+        for i in range(10):
             st.write("")  # Adjust as needed
 
     with col2:
-        st.title("🏠 Home Page")
+        st.title(" Home Page")
         st.write("Welcome to the SBM Website!")
 
         # Buttons
