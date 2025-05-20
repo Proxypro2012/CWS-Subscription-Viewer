@@ -169,14 +169,15 @@ def settings():
             st.write("Are you sure you want to log out?")
             col1, col2 = st.columns(2)
             with col1:
-                if st.button("Yes, log out"):
+                if st.button("Yes, log out", key="confirm_yes"):
+                    # Clear session state and rerun
                     st.session_state.logged_in = False
                     st.session_state.page = "home"
                     st.session_state.username = ""
                     st.session_state.password = ""
                     st.rerun()
             with col2:
-                if st.button("Cancel"):
+                if st.button("Cancel", key="confirm_no"):
                     st.toast("Logout cancelled.")
 
        
