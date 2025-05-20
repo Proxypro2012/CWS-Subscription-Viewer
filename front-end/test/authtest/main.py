@@ -162,34 +162,13 @@ def settings():
         if st.button("Settings"):
             st.session_state.page = "settings"
             st.rerun()
-
-
-        def show_logout_modal():
-            @st.dialog("Confirm Logout")
-            def logout_dialog():
-                st.write("Are you sure you want to log out?")
-                col1, col2 = st.columns(2)
-                with col1:
-                    if st.button("Yes, log out", key="confirm_yes"):
-                        # Clear credentials
-                        st.experimental_set_query_params()  # clear param
-                        st.write("Logged out.")
-                        st.stop()
-                with col2:
-                    if st.button("Cancel", key="confirm_no"):
-                        st.experimental_set_query_params()  # clear param
-                        st.toast("Logout cancelled.")
-                        st.stop()
-
-        # Check for query param on every run
-        query_params = st.experimental_get_query_params()
-        if "show_logout" in query_params:
-            show_logout_modal()
-
-       
         if st.button("Logout"):
-            st.experimental_set_query_params(show_logout="1")
-            st.rerun()
+            if st.confirm("Are you sure you want to log out?"):
+                st.session_state.logged_in = False
+                st.session_state.page = "home"
+                st.session_state.username = ""
+                st.session_state.password = ""
+                st.rerun()
 
 
 
