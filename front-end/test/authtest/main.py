@@ -46,12 +46,12 @@ def homepage():
 
         # Properly centered title and paragraph with inline style
         st.markdown("""
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top: 20px;">
             <div style="display: inline-flex; align-items: center; justify-content: center;">
                 <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
                     <path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/>
                 </svg>
-                <h1 style="margin-left: 12px;">Home Page</h1>
+                <span style="font-size: 32px; font-weight: 600; margin-left: 12px; color: #e3e3e3;">Home Page</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
