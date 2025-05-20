@@ -137,25 +137,36 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-        # Custom CSS to remove padding/margin and stretch navbar
+    # Inject custom CSS for full-width layout
     st.markdown("""
         <style>
+            /* Remove padding from the main container */
             .block-container {
-                padding-top: 0rem;
+                padding: 0 !important;
             }
-            .css-18e3th9 {
-                padding-top: 0rem;
+
+            /* Remove padding from header (if present) */
+            header, .css-18e3th9 {
+                padding: 0 !important;
             }
+
+            /* Expand navbar container to full width */
+            .e1nzilvr5, .e1fb0mya1 {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Center-align nav bar menu items */
             .nav-container {
-                margin: 0 auto;
-                width: 100%;
+                display: flex;
+                justify-content: center;
             }
         </style>
     """, unsafe_allow_html=True)
 
-    # Full-width top horizontal navbar
+    # Render the full-width navbar
     selected = option_menu(
-        menu_title=None,
+        menu_title=None,  # No title
         options=["Home", "Settings"],
         icons=["house", "gear"],
         default_index=0,
@@ -163,20 +174,21 @@ def dashboard():
         styles={
             "container": {
                 "padding": "0!important",
-                "background-color": "#ffffff",
+                "margin": "0!important",
                 "width": "100%",
+                "background-color": "#f8f9fa",
                 "justify-content": "center"
             },
             "icon": {"color": "#000", "font-size": "18px"},
             "nav-link": {
-                "font-size": "16px",
+                "font-size": "18px",
                 "margin": "0px",
-                "padding": "10px 20px",
+                "padding": "1rem",
                 "color": "#000",
-                "--hover-color": "#eee"
+                "--hover-color": "#e9ecef"
             },
             "nav-link-selected": {
-                "background-color": "#f0f0f0",
+                "background-color": "#dee2e6",
                 "font-weight": "bold",
                 "color": "#000"
             }
@@ -195,6 +207,16 @@ def dashboard():
 
     
             
+
+
+
+
+
+
+
+
+
+
 
 
 # --- Routing ---
