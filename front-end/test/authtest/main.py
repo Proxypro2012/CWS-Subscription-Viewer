@@ -141,26 +141,9 @@ def dashboard():
     pages = ["Home", "Settings"]
 
     # Define custom styles for the navbar
-    styles = {
-        "nav": {
-            "background-color": "#f8f9fa",  # Light background
-            "justify-content": "center",     # Center the items
-        },
-        "span": {
-            "color": "#000",                 # Black text color
-            "padding": "14px",               # Padding around text
-        },
-        "active": {
-            "background-color": "#007bff",   # Blue background for active item
-            "color": "white",                # White text color for active item
-        },
-        "hover": {
-            "background-color": "#e9ecef",   # Light gray background on hover
-        },
-    }
 
     # Add the navbar to your app
-    page = st_navbar(pages, styles=styles)
+    page = st_navbar(pages)
 
     # Display the content based on the selected page
     if page == "Home":
