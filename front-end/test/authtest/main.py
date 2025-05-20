@@ -141,8 +141,8 @@ def dashboard():
 
     
     with st.sidebar:
-        st.page_link("main.py", label="Home", icon="🏠")
-        st.page_link("pages/Settings.py", label="Settings", icon="⚙️")  
+        st.page_link("front-end/test/authtest/main.py", label="Home", icon="🏠")
+        st.page_link("front-end/test/pages/Settings.py", label="Settings", icon="⚙️")  
 
 
 
