@@ -20,6 +20,7 @@ if "password" not in st.session_state:
     st.session_state.password = ""
 
 
+st.write("DEBUG: current page =", st.session_state.page)
 
 
 
@@ -180,8 +181,8 @@ def settings():
 
 # --- Routing ---
 # Only set default page on login event, not every rerun
-if st.session_state.logged_in and st.session_state.page == "login":
-    st.session_state.page = "dashboard"
+
+st.session_state.page = "dashboard"
 
 
 if st.session_state.page == "home":
