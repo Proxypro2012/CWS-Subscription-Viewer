@@ -182,7 +182,8 @@ def settings():
 # --- Routing ---
 # Only set default page on login event, not every rerun
 
-st.session_state.page = "dashboard"
+if st.session_state.logged_in and st.session_state.page == "login":
+    st.session_state.page = "dashboard"
 
 
 if st.session_state.page == "home":
