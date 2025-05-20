@@ -142,21 +142,7 @@ def dashboard():
     
     with st.sidebar:
         st.title("Navigation")
-        """selected = option_menu(
-            menu_title=None,
-            options=["Dashboard", "Settings", "Logout"],
-            icons=["house", "gear", "box-arrow-right"],
-            menu_icon="cast",
-            default_index=0,
-            orientation="vertical",
-        )
-
-        if selected == "Dashboard":
-            st.session_state.page = "dashboard"
-
-        elif selected == "Settings":
-            st.session_state.page = "settings"
-             """
+        
         st.divider()
 
         if st.button("Dashboard"):
