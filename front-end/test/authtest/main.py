@@ -134,18 +134,8 @@ def login():
 
 
 def dashboard():
-    r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
-    r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
-    r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
-
-    st.title(f"Dashboard for {st.session_state.username}")
-
-    
     with st.sidebar:
         st.title("Navigation")
-        
-        st.divider()
-
         if st.button("Dashboard"):
             st.session_state.page = "dashboard"
             st.rerun()
@@ -159,6 +149,29 @@ def dashboard():
             st.session_state.password = ""
             st.rerun()
 
+    st.title(f"Dashboard for {st.session_state.username}")
+    st.write("This is the dashboard page.")
+
+
+def settings():
+    with st.sidebar:
+        st.title("Navigation")
+        if st.button("Dashboard"):
+            st.session_state.page = "dashboard"
+            st.rerun()
+        if st.button("Settings"):
+            st.session_state.page = "settings"
+            st.rerun()
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.session_state.page = "home"
+            st.session_state.username = ""
+            st.session_state.password = ""
+            st.rerun()
+
+    st.title("Settings")
+    st.info("Settings page content goes here.")
+
 
         
 
@@ -167,9 +180,7 @@ def dashboard():
         
        
 
-def settings():
-    st.title("Settings")
-    st.info("Settings has not been implemented yet.")
+
 
 
 
@@ -180,11 +191,6 @@ def settings():
 
 
 # --- Routing ---
-# Only set default page on login event, not every rerun
-
-if st.session_state.logged_in and st.session_state.page == "login":
-    st.session_state.page = "dashboard"
-
 
 if st.session_state.page == "home":
     homepage()
