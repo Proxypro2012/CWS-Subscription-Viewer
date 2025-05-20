@@ -142,7 +142,7 @@ def dashboard():
     
     with st.sidebar:
         st.title("Navigation")
-        selected = option_menu(
+        """selected = option_menu(
             menu_title=None,
             options=["Dashboard", "Settings", "Logout"],
             icons=["house", "gear", "box-arrow-right"],
@@ -156,7 +156,25 @@ def dashboard():
 
         elif selected == "Settings":
             st.session_state.page = "settings"
-            
+             """
+        st.divider()
+
+        if st.button("Dashboard"):
+            st.session_state.page = "dashboard"
+            st.rerun()
+        if st.button("Settings"):
+            st.session_state.page = "settings"
+            st.rerun()
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.session_state.page = "home"
+            st.session_state.username = ""
+            st.session_state.password = ""
+            st.rerun()
+
+        
+
+
 
         
        
