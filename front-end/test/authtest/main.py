@@ -137,22 +137,60 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
+        # Custom CSS to remove padding/margin and stretch navbar
+    st.markdown("""
+        <style>
+            .block-container {
+                padding-top: 0rem;
+            }
+            .css-18e3th9 {
+                padding-top: 0rem;
+            }
+            .nav-container {
+                margin: 0 auto;
+                width: 100%;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Full-width top horizontal navbar
     selected = option_menu(
-        menu_title=None,  # No title
-        options=["Home", "Settings",],
-        icons=["house", "gear",],  # Bootstrap icons
-        menu_icon="cast",
+        menu_title=None,
+        options=["Home", "Settings"],
+        icons=["house", "gear"],
         default_index=0,
-        orientation="horizontal"
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#ffffff",
+                "width": "100%",
+                "justify-content": "center"
+            },
+            "icon": {"color": "#000", "font-size": "18px"},
+            "nav-link": {
+                "font-size": "16px",
+                "margin": "0px",
+                "padding": "10px 20px",
+                "color": "#000",
+                "--hover-color": "#eee"
+            },
+            "nav-link-selected": {
+                "background-color": "#f0f0f0",
+                "font-weight": "bold",
+                "color": "#000"
+            }
+        }
     )
 
+    # Page content
     if selected == "Home":
-        st.title("Welcome to the Home Page")
-        st.write("Home Page content goes here.")
-        
+        st.title("🏠 Home")
+        st.write("Welcome to the Home page!")
+
     elif selected == "Settings":
-        st.title("Settings Page")
-        st.write("Settings content goes here.")
+        st.title("⚙️ Settings")
+        st.write("Configure your app settings here.")
 
 
     
