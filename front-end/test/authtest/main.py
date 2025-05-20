@@ -137,7 +137,7 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-    
+    st.title(f"Dashboard for {st.session_state.username}")
 
     
     with st.sidebar:
