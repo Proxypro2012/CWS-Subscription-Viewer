@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 from streamlit_extras.let_it_rain import rain
+from streamlit_navigation_bar import st_navbar
 
 # Config
 st.set_page_config(page_title="CWS Subscription Viewer")
@@ -116,11 +117,21 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-    with r1col2:
-        st.title(f"Dashboard - Welcome {st.session_state.username}")
-        st.divider()
-    with r2col2:
-        st.write("You can add user-specific or subscription data here.")
+    current_page = st_navbar(["Reports", "Settings"])
+
+    if current_page == "Home":
+        with r1col2:
+            st.title(f"Dashboard - Welcome {st.session_state.username}")
+            st.divider()
+        with r2col2:
+            st.write("You can add user-specific or subscription data here.")
+
+    elif current_page == "Settings":
+        with r1col2:
+            st.title("Settings")
+            st.divider()
+        with r2col2:
+            st.write("You can add user-specific settings here.")
             
 
 
