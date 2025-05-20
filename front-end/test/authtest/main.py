@@ -141,15 +141,30 @@ def dashboard():
 
     
     with st.sidebar:
-        st.page_link("../pages/Home.py", label="Home", icon="🏠")
-        st.page_link("../pages/Settings.py", label="Settings", icon="⚙️")
+        st.title("Navigation")
+        selected = option_menu(
+            menu_title=None,
+            options=["Dashboard", "Settings", "Logout"],
+            icons=["house", "gear", "box-arrow-right"],
+            menu_icon="cast",
+            default_index=0,
+            orientation="vertical",
+        )
+
+        if selected == "Dashboard":
+            st.session_state.page = "dashboard"
+        elif selected == "Settings":
+            st.session_state.page = "settings"
+       
 
 
 
 
 
 
-
+def settings():
+    st.title("Settings")
+    st.info("Settings page is under construction.")
 
 
 
@@ -165,3 +180,6 @@ elif st.session_state.page == "login":
     login()
 elif st.session_state.page == "dashboard":
     dashboard()
+elif st.session_state.page == "settings":
+    settings()
+
