@@ -149,7 +149,7 @@ def dashboard():
             st.session_state.page = "dashboard"
             st.rerun()
         if st.button("Settings"):
-            settings()
+            st.session_state.page = "settings"
             st.rerun()
         if st.button("Logout"):
             st.session_state.logged_in = False
@@ -179,8 +179,10 @@ def settings():
 
 
 # --- Routing ---
-if st.session_state.logged_in:
+# Only set default page on login event, not every rerun
+if st.session_state.logged_in and st.session_state.page == "login":
     st.session_state.page = "dashboard"
+
 
 if st.session_state.page == "home":
     homepage()
@@ -188,6 +190,8 @@ elif st.session_state.page == "login":
     login()
 elif st.session_state.page == "dashboard":
     dashboard()
+elif st.session_state.page == "settings":
+    settings()
 
 
 
