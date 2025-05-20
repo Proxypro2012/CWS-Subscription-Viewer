@@ -153,8 +153,10 @@ def dashboard():
 
         if selected == "Dashboard":
             st.session_state.page = "dashboard"
+            st.rerun()
         elif selected == "Settings":
             st.session_state.page = "settings"
+            st.rerun()
        
 
 
