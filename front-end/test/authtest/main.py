@@ -137,70 +137,37 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-    # Inject custom CSS for full-width layout
-    st.markdown("""
-        <style>
-            /* Remove padding from the main container */
-            .block-container {
-                padding: 0 !important;
-            }
+    # Define your pages
+    pages = ["Home", "Settings"]
 
-            /* Remove padding from header (if present) */
-            header, .css-18e3th9 {
-                padding: 0 !important;
-            }
+    # Define custom styles for the navbar
+    styles = {
+        "nav": {
+            "background-color": "#f8f9fa",  # Light background
+            "justify-content": "center",     # Center the items
+        },
+        "span": {
+            "color": "#000",                 # Black text color
+            "padding": "14px",               # Padding around text
+        },
+        "active": {
+            "background-color": "#007bff",   # Blue background for active item
+            "color": "white",                # White text color for active item
+        },
+        "hover": {
+            "background-color": "#e9ecef",   # Light gray background on hover
+        },
+    }
 
-            /* Expand navbar container to full width */
-            .e1nzilvr5, .e1fb0mya1 {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
+    # Add the navbar to your app
+    page = st_navbar(pages, styles=styles)
 
-            /* Center-align nav bar menu items */
-            .nav-container {
-                display: flex;
-                justify-content: center;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    # Render the full-width navbar
-    selected = option_menu(
-        menu_title=None,  # No title
-        options=["Home", "Settings"],
-        icons=["house", "gear"],
-        default_index=0,
-        orientation="horizontal",
-        styles={
-            "container": {
-                "padding": "0!important",
-                "margin": "0!important",
-                "width": "100%",
-                "background-color": "#f8f9fa",
-                "justify-content": "center"
-            },
-            "icon": {"color": "#000", "font-size": "18px"},
-            "nav-link": {
-                "font-size": "18px",
-                "margin": "0px",
-                "padding": "1rem",
-                "color": "#000",
-                "--hover-color": "#e9ecef"
-            },
-            "nav-link-selected": {
-                "background-color": "#dee2e6",
-                "font-weight": "bold",
-                "color": "#000"
-            }
-        }
-    )
-
-    # Page content
-    if selected == "Home":
+    # Display the content based on the selected page
+    if page == "Home":
         st.title("🏠 Home")
         st.write("Welcome to the Home page!")
 
-    elif selected == "Settings":
+    elif page == "Settings":
         st.title("⚙️ Settings")
         st.write("Configure your app settings here.")
 
