@@ -137,26 +137,12 @@ def dashboard():
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-    # Define your pages
-    pages = ["Home", "Settings"]
-
-    # Define custom styles for the navbar
-
-    # Add the navbar to your app
-    page = st_navbar(pages)
-
-    # Display the content based on the selected page
-    if page == "Home":
-        st.title("🏠 Home")
-        st.write("Welcome to the Home page!")
-
-    elif page == "Settings":
-        st.title("⚙️ Settings")
-        st.write("Configure your app settings here.")
-
+    
 
     
-            
+    with st.sidebar:
+        st.page_link("home.py", label="Home", icon="🏠")
+        st.page_link("pages/Settings.py", label="Settings", icon="⚙️")  
 
 
 
