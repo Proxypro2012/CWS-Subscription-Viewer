@@ -151,12 +151,7 @@ def dashboard():
             orientation="vertical",
         )
 
-        if selected == "Dashboard":
-            st.session_state.page = "dashboard"
-            st.rerun()
-        elif selected == "Settings":
-            st.session_state.page = "settings"
-            st.rerun()
+        
        
 
 
@@ -164,9 +159,6 @@ def dashboard():
 
 
 
-def settings():
-    st.title("Settings")
-    st.info("Settings page is under construction.")
 
 
 
