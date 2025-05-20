@@ -164,7 +164,7 @@ def dashboard():
             "container": {
                 "padding": "0!important",
                 "background-color": "#ffffff",
-                "width": "100%",
+                "width": "1000%",
                 "justify-content": "center"
             },
             "icon": {"color": "#000", "font-size": "18px"},
