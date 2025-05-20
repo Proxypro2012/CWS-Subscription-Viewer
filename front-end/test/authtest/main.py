@@ -161,6 +161,9 @@ def dashboard():
         
        
 
+def settings():
+    st.title("Settings")
+    st.info("Settings has not been implemented yet.")
 
 
 
@@ -180,5 +183,8 @@ elif st.session_state.page == "login":
     login()
 elif st.session_state.page == "dashboard":
     dashboard()
+elif st.session_state.page == "settings":
+    settings()
+
 
 
