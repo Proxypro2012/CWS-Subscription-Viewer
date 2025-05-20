@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from streamlit_extras.let_it_rain import rain
 from streamlit_navigation_bar import st_navbar
+from streamlit_option_menu import option_menu
 
 # Config
 st.set_page_config(page_title="CWS Subscription Viewer")
@@ -17,6 +18,12 @@ if "username" not in st.session_state:
     st.session_state.username = ""
 if "password" not in st.session_state:
     st.session_state.password = ""
+
+
+
+
+
+
 
 # --- Pages ---
 def homepage():
@@ -75,6 +82,12 @@ def homepage():
         pass  # in case rain is undefined or external
 
 
+
+
+
+
+
+
 def login():
     r0col1, r0col2, r0col3 = st.columns([1, 0.5, 1])
     r1col1, r1col2, r1col3 = st.columns([1, 0.5, 1])
@@ -112,26 +125,37 @@ def login():
     rain('•', 20, falling_speed=5, animation_length="infinite")
 
 
+
+
+
+
+
+
+
 def dashboard():
     r1col1, r1col2, r1col3 = st.columns([0.25, 4, 0.25])
     r2col1, r2col2, r2col3 = st.columns([0.25, 4, 0.25])
     r3col1, r3col2, r3col3 = st.columns([0.25, 4, 0.25])
 
-    current_page = st_navbar(["Reports", "Settings"])
+    selected = option_menu(
+        menu_title=None,  # No title
+        options=["Home", "Settings",],
+        icons=["house", "gear",],  # Bootstrap icons
+        menu_icon="cast",
+        default_index=0,
+        orientation="horizontal"
+    )
 
-    if current_page == "Home":
-        with r1col2:
-            st.title(f"Dashboard - Welcome {st.session_state.username}")
-            st.divider()
-        with r2col2:
-            st.write("You can add user-specific or subscription data here.")
+    if selected == "Home":
+        st.title("Welcome to the Home Page")
+        st.write("Home Page content goes here.")
+        
+    elif selected == "Settings":
+        st.title("Settings Page")
+        st.write("Settings content goes here.")
 
-    elif current_page == "Settings":
-        with r1col2:
-            st.title("Settings")
-            st.divider()
-        with r2col2:
-            st.write("You can add user-specific settings here.")
+
+    
             
 
 
