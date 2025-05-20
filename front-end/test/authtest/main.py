@@ -149,7 +149,7 @@ def dashboard():
             st.session_state.page = "dashboard"
             st.rerun()
         if st.button("Settings"):
-            st.session_state.page = "settings"
+            settings()
             st.rerun()
         if st.button("Logout"):
             st.session_state.logged_in = False
@@ -188,8 +188,7 @@ elif st.session_state.page == "login":
     login()
 elif st.session_state.page == "dashboard":
     dashboard()
-elif st.session_state.page == "settings":
-    settings()
+
 
 
 
