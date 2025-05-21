@@ -138,7 +138,6 @@ class NavigationWidgets:
                 st.session_state.page = "settings"
                 st.rerun()
             if st.button("Logout"):
-                if st.confirm("Are you sure you want to log out?"):
                     st.session_state.logged_in = False
                     st.session_state.page = "home"
                     st.session_state.username = ""
@@ -152,17 +151,16 @@ class NavigationWidgets:
 
 def dashboard():
     NavigationWidgets()
-
     st.title(f"Dashboard for {st.session_state.username}")
     st.write("This is the dashboard page.")
 
 
+
+
+
+
 def settings():
-
     NavigationWidgets()
-
-
-
     st.title("Settings")
     st.info("Settings page content goes here.")
 
