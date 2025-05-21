@@ -127,6 +127,23 @@ def login():
 
 
 
+class NavigationWidgets:
+    def __init__(self):
+        with st.sidebar:
+            st.title("Navigation")
+            if st.button("Dashboard"):
+                st.session_state.page = "dashboard"
+                st.rerun()
+            if st.button("Settings"):
+                st.session_state.page = "settings"
+                st.rerun()
+            if st.button("Logout"):
+                if st.confirm("Are you sure you want to log out?"):
+                    st.session_state.logged_in = False
+                    st.session_state.page = "home"
+                    st.session_state.username = ""
+                    st.session_state.password = ""
+                    st.rerun()
 
 
 
@@ -134,42 +151,15 @@ def login():
 
 
 def dashboard():
-    with st.sidebar:
-        st.title("Navigation")
-        if st.button("Dashboard"):
-            st.session_state.page = "dashboard"
-            st.rerun()
-        if st.button("Settings"):
-            st.session_state.page = "settings"
-            st.rerun()
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            st.session_state.page = "home"
-            st.session_state.username = ""
-            st.session_state.password = ""
-            st.rerun()
+    NavigationWidgets()
 
     st.title(f"Dashboard for {st.session_state.username}")
     st.write("This is the dashboard page.")
 
 
 def settings():
-    with st.sidebar:
-        st.title("Navigation")
-        if st.button("Dashboard"):
-            st.session_state.page = "dashboard"
-            st.rerun()
-        if st.button("Settings"):
-            st.session_state.page = "settings"
-            st.rerun()
-        if st.button("Logout"):
-            if st.confirm("Are you sure you want to log out?"):
-                st.session_state.logged_in = False
-                st.session_state.page = "home"
-                st.session_state.username = ""
-                st.session_state.password = ""
-                st.rerun()
 
+    NavigationWidgets()
 
 
 
