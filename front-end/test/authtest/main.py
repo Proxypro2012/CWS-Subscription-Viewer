@@ -24,15 +24,14 @@ if "language" not in st.session_state:
     st.session_state.language = "en"  # default language
 
 # --- Translation Helpers ---
-@st.cache_data(show_spinner=False)
 def safe_translate(text, lang):
     if lang == "en":
         return text
     try:
-        translated = translator.translate(text, dest=lang)
-        return translated.text
+        return translator.translate(text, dest=lang).text
     except Exception:
-        return text  # fallback
+        return text
+
 
 def translate(text):
     translated = safe_translate(text, st.session_state.language)
