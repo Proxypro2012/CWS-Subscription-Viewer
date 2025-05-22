@@ -6,4 +6,4 @@ streamlit-timeline
 streamlit-extras
 streamlit-navigation-bar
 streamlit-option-menu
-
+googletrans
