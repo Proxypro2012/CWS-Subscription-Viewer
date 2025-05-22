@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 from streamlit_extras.let_it_rain import rain
 from googletrans import Translator
+import asyncio
 
 # Config
 st.set_page_config(page_title="CWS Subscription Viewer")
@@ -24,14 +25,22 @@ if "language" not in st.session_state:
     st.session_state.language = "en"  # default language
 
 # --- Translation Helpers ---
+
+
+async def async_translate(text, lang):
+    return await translator.translate(text, dest=lang)
+
 def safe_translate(text, lang):
     if lang == "en":
         return text
     try:
-        return translator.translate(text, dest=lang).text
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        result = loop.run_until_complete(async_translate(text, lang))
+        loop.close()
+        return result.text
     except Exception:
         return text
-
 
 def translate(text):
     translated = safe_translate(text, st.session_state.language)
