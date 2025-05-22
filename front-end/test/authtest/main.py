@@ -1,16 +1,12 @@
 import streamlit as st
 import requests
 from streamlit_extras.let_it_rain import rain
-from googletrans import Translator
-import asyncio
+from deep_translator import GoogleTranslator
 
 # Config
 st.set_page_config(page_title="CWS Subscription Viewer")
 
 BASE_URL = "https://cws-subscription-viewer.onrender.com"
-
-# --- Translator Setup ---
-translator = Translator()
 
 # --- Session State Defaults ---
 if "logged_in" not in st.session_state:
@@ -22,29 +18,16 @@ if "username" not in st.session_state:
 if "password" not in st.session_state:
     st.session_state.password = ""
 if "language" not in st.session_state:
-    st.session_state.language = "en"  # default language
+    st.session_state.language = "en"  # default to English
 
-# --- Translation Helpers ---
-
-
-async def async_translate(text, lang):
-    return await translator.translate(text, dest=lang)
-
-def safe_translate(text, lang):
-    if lang == "en":
+# --- Translation Helper ---
+def translate(text):
+    if st.session_state.language == "en":
         return text
     try:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        result = loop.run_until_complete(async_translate(text, lang))
-        loop.close()
-        return result.text
+        return GoogleTranslator(source="auto", target=st.session_state.language).translate(text)
     except Exception:
         return text
-
-def translate(text):
-    translated = safe_translate(text, st.session_state.language)
-    return translated.strip() if translated.strip() else text
 
 # --- Pages ---
 def homepage():
@@ -157,7 +140,8 @@ def settings():
     inv_map = {v: k for k, v in lang_code_map.items()}
     current_lang = inv_map.get(st.session_state.language, "English")
 
-    selected_lang = st.selectbox("🌐 Select Language", list(lang_code_map.keys()), index=list(lang_code_map.keys()).index(current_lang))
+    selected_lang = st.selectbox("🌐 Select Language", list(lang_code_map.keys()),
+                                 index=list(lang_code_map.keys()).index(current_lang))
     st.session_state.language = lang_code_map[selected_lang]
 
     st.info(translate("Settings page content goes here."))
